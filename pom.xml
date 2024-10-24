@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.jummartinezro</groupId>
+    <artifactId>open-api-ratpack</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <name>open-api-ratpack</name>
+    <description>A simple OpenAPI server using Groovy, Ratpack, Gplus and Maven</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>${groovy.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>io.ratpack</groupId>
+            <artifactId>ratpack-groovy</artifactId>
+            <version>${ratpack.version}</version>
+        </dependency>
+        <!-- Swagger for OpenAPI generation -->
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-core</artifactId>
+            <version>${swagger.core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-transport-native-epoll</artifactId>
+            <version>${netty.version}</version>
+            <classifier>linux-x86_64</classifier>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.gmavenplus</groupId>
+                <artifactId>gmavenplus-plugin</artifactId>
+                <version>4.0.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.groovy</groupId>
+                        <artifactId>groovy</artifactId>
+                        <version>4.0.23</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <scripts>
+                        <script>src/main/groovy/Main.groovy</script>
+                    </scripts>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <groovy.version>4.0.23</groovy.version>
+        <netty.version>4.1.73</netty.version>
+        <ratpack.version>2.0.0-rc-1</ratpack.version>
+        <swagger.core.version>2.2.25</swagger.core.version>
+    </properties>
+
+</project>
